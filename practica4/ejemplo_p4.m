@@ -1,0 +1,17 @@
+A=[-2,-1,0;1,-5,-1;0,1,-2]
+B=[1;0;0]
+C=[1,0,0]
+G=ss(A,B,C,0)
+ p=[-4,-6,-8]
+ K=place(A,B,p)
+ step(G)
+Ar=A-B*K
+g1=ss(Ar,B,C,0)
+step(g1)
+H=ctrb(A,B)
+rank(H)
+J=obsv(A,C)
+rank(J)
+[num,den]=ss2tf(A,B,C,0)
+FDT=tf(num,den)
+[z,p,k]=ss2zp(A,B,C,0)

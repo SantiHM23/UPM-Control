@@ -1,0 +1,13 @@
+s=tf('s'); 
+G=tf(1,[1,4,3]); 
+step(G); 
+k=dcgain(G);
+L=0.1; 
+T=2-L; 
+[Gc1,Kp1]=znichols(1,[k,L,T,10]); 
+[Gc2,Kp2,Ti2]=nichols(2,[k,L,T,10]); 
+[Gc3,Kp3,Ti3,Td3]=nichols(3,[k,L,T,10]);
+G_c1=feedback(G*Gc1,1); 
+G_c2=feedback(G*Gc2,1); 
+G_c3=feedback(G*Gc3,1); 
+step(G_c1,G_c2,G_c3);
